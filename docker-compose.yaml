@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: sam2/frontend
+    image: registry.cn-beijing.aliyuncs.com/cswangrf/sam2_frontend:latest
     build:
       context: ./demo/frontend
       dockerfile: frontend.Dockerfile
@@ -8,7 +8,7 @@ services:
       - 7262:80
 
   backend:
-    image: sam2/backend
+    image: registry.cn-beijing.aliyuncs.com/cswangrf/sam2:latest
     build:
       context: .
       dockerfile: backend.Dockerfile

@@ -11,7 +11,7 @@ ENV GUNICORN_PORT=5000
 # SAM 2 environment variables
 ENV APP_ROOT=/opt/sam2
 ENV PYTHONUNBUFFERED=1
-ENV SAM2_BUILD_CUDA=0
+ENV SAM2_BUILD_CUDA=1
 ENV MODEL_SIZE=${MODEL_SIZE}
 
 # Install system requirements
@@ -53,12 +53,12 @@ ADD https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.
 WORKDIR ${APP_ROOT}/server
 
 # https://pythonspeed.com/articles/gunicorn-in-docker/
-CMD gunicorn --worker-tmp-dir /dev/shm \
-    --worker-class gthread app:app \
-    --log-level info \
-    --access-logfile /dev/stdout \
-    --log-file /dev/stderr \
-    --workers ${GUNICORN_WORKERS} \
-    --threads ${GUNICORN_THREADS} \
-    --bind 0.0.0.0:${GUNICORN_PORT} \
-    --timeout 60
+# CMD gunicorn --worker-tmp-dir /dev/shm \
+#     --worker-class gthread app:app \
+#     --log-level info \
+#     --access-logfile /dev/stdout \
+#     --log-file /dev/stderr \
+#     --workers ${GUNICORN_WORKERS} \
+#     --threads ${GUNICORN_THREADS} \
+#     --bind 0.0.0.0:${GUNICORN_PORT} \
+#     --timeout 60
