@@ -14,6 +14,9 @@ ENV PYTHONUNBUFFERED=1
 ENV SAM2_BUILD_CUDA=1
 ENV MODEL_SIZE=${MODEL_SIZE}
 
+RUN sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.aliyun.com\/ubuntu\//g' /etc/apt/sources.list && \
+    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 # Install system requirements
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
